@@ -2,10 +2,10 @@
 layout: project_page
 permalink: /
 
-title: "FlashTalker: Efficient Audio-Driven Speaker-Specific Talking Head Synthesis via Mesh-Embedded Gaussians"
+title: "FFAvatar: Feed-Forward 4D Head Avatar Reconstruction from General Portrait Images"
 
 authors:
-    Jianjiang Yao, Ke Xian, Renxiang Dai, Lingwei Chen, Caiming Qiu 
+    Jianjiang Yao, Ke Xian, Renxiang Dai, Caiming Qiu 
 affiliations:
     Huazhong University of Science and Technology
 paper: "coming-soon"
@@ -20,9 +20,9 @@ data: "coming-soon"
     <div class="column is-four-fifths">
         <h2>Abstract</h2>
         <div class="content has-text-justified">
-    Thanks to its quick rendering speed and high visual quality, 3D Gaussian Splatting (3DGS) has been adopted for audio-driven talking head synthesis. However, existing 3DGS-based methods often underutilize the geometric priors provided by parameterized head models, making it challenging to learn accurate appearance and facial dynamics. Moreover, the lack of intermediate supervision during training leads to mismatches between facial expressions and lip movements, resulting in incorrect Gaussian deformations, visual artifacts, and jitter.
-    To overcome these limitations, we introduce FlashTalker, a novel framework that adopts a “template + offset” paradigm for audio-driven talking head generation. We attach 3D Gaussians uniformly to the mesh surface of a parameterized FLAME head model and use audio signals as the primary driver for expression synthesis, enabling dynamic and semantically guided mesh deformation. To improve efficiency, we propose UV-based Gaussian sampling that adapts the number of Gaussians to the resolution, reducing spatial redundancy and accelerating inference.
-    Additionally, FlashTalker incorporates a disentangled cross-region attention mechanism and lip-guided Gaussian supervision. These modules enable localized control of 3D Gaussian motion and introduce intermediate guidance to better align lip motion with audio cues. Compared to previous methods, FlashTalker achieves more accurate eye-blinking, enhanced reproduction of fine facial details such as wrinkles, and superior overall performance. Extensive experiments demonstrate its advantages in facial realism, lip-sync precision, and rendering speed.
+We present FFAvatar, a Transformer-based 3D Gaussian framework for fast construction of high-quality and animatable 4D head avatars from unconstrained image collections. Unlike existing feed-forward approaches that require a fixed number of input views, FFAvatar supports incremental reconstruction, progressively refining the avatar representation as additional reference images become available.
+At the core of our method is an alternating attention mechanism that disentangles identity appearance from expression and viewpoint variations, enabling the reconstruction of a canonical 3D appearance that remains consistent across poses and facial expressions. To balance visual fidelity and computational efficiency, we introduce a sparse-to-dense learning paradigm. Coarse appearance features are first learned using sparse primitives anchored to the FLAME vertex level and are subsequently densified in the UV domain to capture fine-grained geometric and texture details.
+We further propose a plug-and-play motion refinement module that enables subject-specific dynamic personalization by modeling residual motion beyond parametric deformation. Extensive experiments demonstrate that FFAvatar efficiently produces high-fidelity and controllable 4D head avatars, achieving superior flexibility, driving efficiency, and identity-consistent rendering across diverse expressions and viewpoints.
         </div>
     </div>
 </div>
@@ -31,29 +31,9 @@ data: "coming-soon"
 
 ## Method
 
-![Turing Machine](/static/image/overview.svg)
+![FFAvatar Overview](/static/image/FFAvatar.svg)
 
-*Figure 1: Overview of FlashTalker. The Audio-to-Expression Translation module predicts FLAME expression parameters from audio input and combines them with tracked FLAME parameters to drive the deformation of a parameterized head model.
-UV-based sampling is employed to uniformly distribute 3D Gaussians across the mesh surface, while additional Gaussians are placed on the teeth to construct the template Gaussian field.
-The Disentangled Cross-Region Attention module partitions the head into upper-face, lower-face, and other regions, and applies region-specific cross-attention using corresponding driving features.
-A global Head-Region Cross-Attention is introduced to ensure motion continuity across regions. Finally, an Offset MLP predicts spatial offsets of the template Gaussians relative to the target talking head.*
+*Figure 1: Overview of FFAvatar. **Canonical field modeling.** Visual features extracted by DINOv3 are concatenated with camera pose and expression encodings. An alternating attention mechanism performs intra- and inter-image matching to infer a consistent global appearance representation across all inputs. This representation is then aligned with the FLAME template through the proposed Sparse-to-Dense Cross-modal Alignment Module, producing an expression- and viewpoint-invariant static 3D appearance. **Deformable field modeling.** Facial motions are driven by the FLAME model using standard linear blend skinning (LBS) and corrective blendshapes, and further refined by the proposed Motion-Aware Refinement Module to capture fine-grained, identity-dependent dynamic details.*
 
 ## Video
-<video src="static/image/video_demo.mp4" controls width="1280"></video>
-
-
-## Self-Driven Setting
-Qualitative comparison of talking head generation across methods. We compare our method with several baselines on four key head regions: mouth shape, wrinkles, hair details, and eye blinking. Red dashed boxes highlight areas with noticeable deviations from the ground truth.
-![Turing Machine](/static/image/Self-Driven.svg)
-
-
-## Cross-Driven Setting
-Visual comparison of cross-identity audio-driven talking head generation. Cross-identity driving results on two unseen subjects. The reference column shows ground-truth frames of the original speakers, while the remaining columns show rendered results from different methods using the same audio. 
-![Turing Machine](/static/image/Cross-Driven.svg)
-
-## Ablation Study
-
-<div style="display: flex; gap: 20px; align-items: center;">
-    <img src="{{ '/static/image/teeth-lip_ablation.svg' | relative_url }}" alt="Turing Machine" width="45%">
-    <img src="{{ '/static/image/wrinkles-eyes_ablation.svg' | relative_url }}" alt="Turing Machine" width="45%">
-</div>
+<video src="static/image/ECCV2026_7586_h264.mp4" controls width="1280"></video>
