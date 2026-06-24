@@ -11,7 +11,6 @@ affiliations:
 paper: "coming-soon"
 video: "coming-soon"
 code: "coming-soon"
-data: "coming-soon"
 # data: https://huggingface.co/docs/datasets
 ---
 
