@@ -39,7 +39,7 @@ We further propose a plug-and-play motion refinement module that enables subject
     <div class="column">
         <h2 style="margin-bottom: 1.2rem;">Method</h2>
         <figure style="margin: 0 auto; display: inline-block;">
-            <img src="/static/image/FFAvatar.svg" alt="FFAvatar Overview" style="max-width: 100%;">
+            <img src="static/image/FFAvatar.svg" alt="FFAvatar Overview" style="max-width: 100%;">
             <figcaption style="margin-top: 0.8rem; font-size: 0.9em; color: #555; text-align: justify; line-height: 1.6; max-width: 900px; margin-left: auto; margin-right: auto;">
                 <strong>Figure 1: Overview of FFAvatar.</strong>
                 <strong style="color: #333;">Canonical field modeling.</strong> Visual features extracted by DINOv3 are concatenated with camera pose and expression encodings. An alternating attention mechanism performs intra- and inter-image matching to infer a consistent global appearance representation across all inputs. This representation is then aligned with the FLAME template through the proposed Sparse-to-Dense Cross-modal Alignment Module, producing an expression- and viewpoint-invariant static 3D appearance.
