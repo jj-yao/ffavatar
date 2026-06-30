@@ -8,9 +8,9 @@ authors:
     Jianjiang Yao, Ke Xian, Renxiang Dai, Caiming Qiu 
 affiliations:
     Huazhong University of Science and Technology
-paper: "coming-soon"
+paper: "https://arxiv.org/abs/2606.30347"
 video: "coming-soon"
-code: "coming-soon"
+code: "https://github.com/jj-yao/FFAvatar-Code"
 # data: https://huggingface.co/docs/datasets
 ---
 
