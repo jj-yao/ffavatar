@@ -9,7 +9,7 @@ authors:
 affiliations:
     Huazhong University of Science and Technology
 paper: "https://arxiv.org/abs/2606.30347"
-video: "coming-soon"
+# video: "coming-soon"
 code: "https://github.com/jj-yao/FFAvatar-Code"
 # data: https://huggingface.co/docs/datasets
 ---
