@@ -60,3 +60,24 @@ We further propose a plug-and-play motion refinement module that enables subject
         </div>
     </div>
 </div>
+
+<hr style="max-width: 80%; margin: 2rem auto; border: none; border-top: 1px solid #e0e0e0;">
+
+<!-- Citation -->
+<div class="columns is-centered">
+    <div class="column">
+        <div style="max-width: 960px; margin: 0 auto;">
+            <h2 style="margin-bottom: 0.8rem;">Citation</h2>
+            <div style="background: #f8f9fa; border: 1px solid #e8e8e8; border-radius: 6px; padding: 1.2rem 1.5rem; font-family: 'Courier New', Courier, monospace; font-size: 0.85em; line-height: 1.6; overflow-x: auto;">
+<pre style="margin: 0; white-space: pre; overflow-x: auto;">
+@inproceedings{yao2026ffavatar,
+  title     = {FFAvatar: Feed-Forward 4D Head Avatar Reconstruction from Sparse Portrait Images},
+  author    = {Jianjiang Yao and Ke Xian and Renxiang Dai and Robert Caiming Qiu},
+  booktitle = {European Conference on Computer Vision},
+  year      = {2026}
+}
+</pre>
+            </div>
+        </div>
+    </div>
+</div>
